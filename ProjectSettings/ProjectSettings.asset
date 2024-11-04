@@ -936,11 +936,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: e32522bb-3aa7-4cae-a430-0870d676e2cb
+  cloudProjectId: f4065f06-d29e-4d7d-bdc7-b63247d5aea6
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: BilSpill
-  organizationId: takotzo
+  projectName: "Schr\xEBddinger"
+  organizationId: schr-ddinger
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
