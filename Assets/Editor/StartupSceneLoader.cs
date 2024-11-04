@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
-/*
+
 namespace Editor
 {
     [InitializeOnLoad]
@@ -29,4 +29,4 @@ namespace Editor
             }
         }
     }
-}*/
+}

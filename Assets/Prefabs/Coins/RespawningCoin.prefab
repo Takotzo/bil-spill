@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5770537385974274520, guid: 24d613740710bc94bad91e1a4dfe0eaf, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 3585870523
+      value: 1983199295
       objectReference: {fileID: 0}
     - target: {fileID: 5770537385974274520, guid: 24d613740710bc94bad91e1a4dfe0eaf, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -93,6 +93,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AuthorityMode: 0
+  TickSyncChildren: 0
   UseUnreliableDeltas: 0
   SyncPositionX: 1
   SyncPositionY: 1
@@ -110,6 +114,7 @@ MonoBehaviour:
   UseQuaternionCompression: 0
   UseHalfFloatPrecision: 0
   InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
   Interpolate: 0
   SlerpPosition: 0
 --- !u!114 &7731806653919953602
@@ -124,4 +129,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d8bae92cc4caf4b87a9fe6e7aefdd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   sr: {fileID: 4899808228660830465}
