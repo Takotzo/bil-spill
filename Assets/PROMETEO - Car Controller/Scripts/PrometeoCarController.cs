@@ -236,7 +236,7 @@ public class PrometeoCarController : MonoBehaviour
         // the speed of the car and CarSounds() controls the engine and drifting sounds. Both methods are invoked
         // in 0 seconds, and repeatedly called every 0.1 seconds.
         if(useUI){
-          InvokeRepeating("CarSpeedUI", 0f, 0.1f);
+          InvokeRepeating(nameof(CarSpeedUI), 0f, 0.1f);
         }else if(!useUI){
           if(carSpeedText != null){
             carSpeedText.text = "0";
@@ -244,7 +244,7 @@ public class PrometeoCarController : MonoBehaviour
         }
 
         if(useSounds){
-          InvokeRepeating("CarSounds", 0f, 0.1f);
+          InvokeRepeating(nameof(CarSounds), 0f, 0.1f);
         }else if(!useSounds){
           if(carEngineSound != null){
             carEngineSound.Stop();
@@ -318,12 +318,12 @@ public class PrometeoCarController : MonoBehaviour
       if (useTouchControls && touchControlsSetup){
 
         if(throttlePTI.buttonPressed){
-          CancelInvoke("DecelerateCar");
+          CancelInvoke(nameof(DecelerateCar));
           deceleratingCar = false;
           GoForward();
         }
         if(reversePTI.buttonPressed){
-          CancelInvoke("DecelerateCar");
+          CancelInvoke(nameof(DecelerateCar));
           deceleratingCar = false;
           GoReverse();
         }
@@ -335,7 +335,7 @@ public class PrometeoCarController : MonoBehaviour
           TurnRight();
         }
         if(handbrakePTI.buttonPressed){
-          CancelInvoke("DecelerateCar");
+          CancelInvoke(nameof(DecelerateCar));
           deceleratingCar = false;
           Handbrake();
         }
@@ -346,7 +346,7 @@ public class PrometeoCarController : MonoBehaviour
           ThrottleOff();
         }
         if((!reversePTI.buttonPressed && !throttlePTI.buttonPressed) && !handbrakePTI.buttonPressed && !deceleratingCar){
-          InvokeRepeating("DecelerateCar", 0f, 0.1f);
+          InvokeRepeating(nameof(DecelerateCar), 0f, 0.1f);
           deceleratingCar = true;
         }
         if(!turnLeftPTI.buttonPressed && !turnRightPTI.buttonPressed && steeringAxis != 0f){
@@ -356,12 +356,12 @@ public class PrometeoCarController : MonoBehaviour
       }else{
 
         if(_wInput){
-          CancelInvoke("DecelerateCar");
+          CancelInvoke(nameof(DecelerateCar));
           deceleratingCar = false;
           GoForward();
         }
         if(_sInput){
-          CancelInvoke("DecelerateCar");
+          CancelInvoke(nameof(DecelerateCar));
           deceleratingCar = false;
           GoReverse();
         }
@@ -373,7 +373,7 @@ public class PrometeoCarController : MonoBehaviour
           TurnRight();
         }
         if(_spaceInput){
-          CancelInvoke("DecelerateCar");
+          CancelInvoke(nameof(DecelerateCar));
           deceleratingCar = false;
           Handbrake();
         }
@@ -384,7 +384,7 @@ public class PrometeoCarController : MonoBehaviour
           ThrottleOff();
         }
         if(!_sInput && !_wInput && !_spaceInput && !deceleratingCar){
-          InvokeRepeating("DecelerateCar", 0f, 0.1f);
+          InvokeRepeating(nameof(DecelerateCar), 0f, 0.1f);
           deceleratingCar = true;
         }
         if(!_aInput && !_dInput && steeringAxis != 0f){
@@ -421,7 +421,7 @@ public class PrometeoCarController : MonoBehaviour
 
       if(useSounds){
         try{
-          if(carEngineSound != null){
+          if(carEngineSound is not null){
             float engineSoundPitch = initialCarEngineSoundPitch + (Mathf.Abs(carRigidbody.linearVelocity.magnitude) / 25f);
             carEngineSound.pitch = engineSoundPitch;
           }
@@ -436,10 +436,10 @@ public class PrometeoCarController : MonoBehaviour
           Debug.LogWarning(ex);
         }
       }else if(!useSounds){
-        if(carEngineSound != null && carEngineSound.isPlaying){
+        if(carEngineSound is not null && carEngineSound.isPlaying){
           carEngineSound.Stop();
         }
-        if(tireScreechSound != null && tireScreechSound.isPlaying){
+        if(tireScreechSound is not null && tireScreechSound.isPlaying){
           tireScreechSound.Stop();
         }
       }
@@ -651,7 +651,7 @@ public class PrometeoCarController : MonoBehaviour
       // also cancel the invoke of this method.
       if(carRigidbody.linearVelocity.magnitude < 0.25f){
         carRigidbody.linearVelocity = Vector3.zero;
-        CancelInvoke("DecelerateCar");
+        CancelInvoke(nameof(DecelerateCar));
       }
     }
 
@@ -667,7 +667,7 @@ public class PrometeoCarController : MonoBehaviour
     // will depend on the handbrakeDriftMultiplier variable. If this value is small, then the car will not drift too much, but if
     // it is high, then you could make the car to feel like going on ice.
     public void Handbrake(){
-      CancelInvoke("RecoverTraction");
+      CancelInvoke(nameof(RecoverTraction));
       // We are going to start losing traction smoothly, there is were our 'driftingAxis' variable takes
       // place. This variable will start from 0 and will reach a top value of 1, which means that the maximum
       // drifting value has been reached. It will increase smoothly by using the variable Time.deltaTime.
@@ -740,16 +740,16 @@ public class PrometeoCarController : MonoBehaviour
           Debug.LogWarning(ex);
         }
       }else if(!useEffects){
-        if(RLWParticleSystem != null){
-          RLWParticleSystem.Stop();
+        if(RLWParticleSystem is not null){
+          RLWParticleSystem?.Stop();
         }
-        if(RRWParticleSystem != null){
-          RRWParticleSystem.Stop();
+        if(RRWParticleSystem is not null){
+          RRWParticleSystem?.Stop();
         }
-        if(RLWTireSkid != null){
+        if(RLWTireSkid is not null){
           RLWTireSkid.emitting = false;
         }
-        if(RRWTireSkid != null){
+        if(RRWTireSkid is not null){
           RRWTireSkid.emitting = false;
         }
       }
@@ -780,7 +780,7 @@ public class PrometeoCarController : MonoBehaviour
         RRwheelFriction.extremumSlip = RRWextremumSlip * handbrakeDriftMultiplier * driftingAxis;
         rearRightCollider.sidewaysFriction = RRwheelFriction;
 
-        Invoke("RecoverTraction", Time.deltaTime);
+        Invoke(nameof(RecoverTraction), Time.deltaTime);
 
       }else if (FLwheelFriction.extremumSlip < FLWextremumSlip){
         FLwheelFriction.extremumSlip = FLWextremumSlip;
