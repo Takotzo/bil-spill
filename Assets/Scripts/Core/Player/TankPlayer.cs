@@ -43,7 +43,7 @@ namespace Core.Player
                 }
                 else
                 {
-                    userData = ServerSingleton.Instance.GameManager.NetworkServer.GetUserDataByClientId(OwnerClientId);
+                    //userData = ServerSingleton.Instance.GameManager.NetworkServer.GetUserDataByClientId(OwnerClientId);
                 }
 
                 playerName.Value = userData.userName;

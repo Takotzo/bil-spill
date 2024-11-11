@@ -68,7 +68,7 @@ namespace NetWorking.Host
             try
             {
                 CreateLobbyOptions lobbyOptions = new CreateLobbyOptions();
-                lobbyOptions.IsPrivate = isPrivate;
+                lobbyOptions.IsPrivate = false;
                 lobbyOptions.Data = new Dictionary<string, DataObject>()
                 {
                     {
