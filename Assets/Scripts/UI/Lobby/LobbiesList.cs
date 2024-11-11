@@ -42,7 +42,7 @@ namespace UI.Lobby
                         value: "0"),
                 };
 
-                QueryResponse lobbies = await Lobbies.Instance.QueryLobbiesAsync(options);
+                QueryResponse lobbies = await LobbyService.Instance.QueryLobbiesAsync(options);
 
                 foreach (Transform child in lobbyItemParent)
                 {

@@ -63,7 +63,7 @@ namespace NetWorking.Client
         {
             try
             {
-                allocation = await Relay.Instance.JoinAllocationAsync(joinCode);
+                allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
             }
             catch (Exception e)
             {
@@ -72,8 +72,11 @@ namespace NetWorking.Client
             }
         
             UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
+            
+            
+            RelayServerData relayServerData = allocation.ToRelayServerData("dtls");
 
-            RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
+            
             transport.SetRelayServerData(relayServerData);
 
             ConnectClient();

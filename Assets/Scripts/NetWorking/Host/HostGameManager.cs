@@ -41,17 +41,8 @@ namespace NetWorking.Host
         {
             try
             {
-                allocation = await Relay.Instance.CreateAllocationAsync(MAX_CONNECTIONS);
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e);
-                return;
-            }
-        
-            try
-            {
-                joinCode = await Relay.Instance.GetJoinCodeAsync(allocation.AllocationId);
+                allocation = await RelayService.Instance.CreateAllocationAsync(MAX_CONNECTIONS);
+                joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
                 Debug.Log(joinCode);
             }
             catch (Exception e)
@@ -61,8 +52,11 @@ namespace NetWorking.Host
             }
 
             UnityTransport transport = NetworkManager.Singleton.GetComponent<UnityTransport>();
-
-            RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
+            
+            
+            RelayServerData relayServerData = allocation.ToRelayServerData("dtls");
+            
+            
             transport.SetRelayServerData(relayServerData);
 
             try
@@ -79,7 +73,7 @@ namespace NetWorking.Host
                 };
                 string playerName = PlayerPrefs.GetString(NameSelector.PLAYER_NAME_KEY, "Unknown");
             
-                Lobby lobby = await Lobbies.Instance.CreateLobbyAsync($"{playerName}'s Lobby", MAX_CONNECTIONS, lobbyOptions);
+                Lobby lobby = await LobbyService.Instance.CreateLobbyAsync($"{playerName}'s Lobby", MAX_CONNECTIONS, lobbyOptions);
 
                 lobbyId = lobby.Id;
 
@@ -115,7 +109,7 @@ namespace NetWorking.Host
             WaitForSecondsRealtime delay = new WaitForSecondsRealtime(waitTimeSeconds);
             while (true)
             {
-                Lobbies.Instance.SendHeartbeatPingAsync(lobbyId);
+                LobbyService.Instance.SendHeartbeatPingAsync(lobbyId);
                 yield return delay;
             }
         }
@@ -133,7 +127,7 @@ namespace NetWorking.Host
 
             try
             {
-                await Lobbies.Instance.DeleteLobbyAsync(lobbyId);
+                await LobbyService.Instance.DeleteLobbyAsync(lobbyId);
             }
             catch (LobbyServiceException e)
             {
