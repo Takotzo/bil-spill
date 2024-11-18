@@ -11103,7 +11103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3520209217
+  GlobalObjectIdHash: 1923557119
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -11167,13 +11167,13 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   maxSpeed: 120
   maxReverseSpeed: 45
-  accelerationMultiplier: 5
+  accelerationMultiplier: 6
   maxSteeringAngle: 35
   steeringSpeed: 0.5
   brakeForce: 450
   decelerationMultiplier: 1
   handbrakeDriftMultiplier: 5
-  bodyMassCenter: {x: 0, y: 0, z: 0}
+  bodyMassCenter: {x: 0, y: 0.4, z: 0}
   frontLeftMesh: {fileID: 2530428459138550854}
   frontLeftCollider: {fileID: 969636342660517304}
   frontRightMesh: {fileID: 4431848558295894116}
@@ -11187,9 +11187,9 @@ MonoBehaviour:
   RRWParticleSystem: {fileID: 6300267224690860941}
   RLWTireSkid: {fileID: 5017821710525540203}
   RRWTireSkid: {fileID: 1812660980006116736}
-  useUI: 1
+  useUI: 0
   carSpeedText: {fileID: 0}
-  useSounds: 1
+  useSounds: 0
   carEngineSound: {fileID: 68366562039687079}
   tireScreechSound: {fileID: 1773585922116622948}
   useTouchControls: 0
