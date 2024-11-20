@@ -11038,9 +11038,11 @@ GameObject:
   - component: {fileID: 68366562039687079}
   - component: {fileID: 1773585922116622948}
   - component: {fileID: 9002349969882083909}
+  - component: {fileID: 4045150476098209199}
+  - component: {fileID: 1482284279116147187}
   m_Layer: 0
   m_Name: PlayerPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11103,7 +11105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1923557119
+  GlobalObjectIdHash: 3520209217
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -11457,3 +11459,42 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   playerCamera: {fileID: 8770250912195372759}
   cameraPriority: 10
+--- !u!114 &4045150476098209199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157689423532669150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 048bbdd9ee3d3ba40b51b7aef45a2d7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  currentCheckpoint:
+    m_InternalValue: 0
+  currentLap:
+    m_InternalValue: 0
+  checkpointInBetween: 3
+--- !u!135 &1482284279116147187
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157689423532669150}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.6, z: 2.39}
