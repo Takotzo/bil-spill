@@ -320,7 +320,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1.4161209
+  m_Intensity: 7.0806046
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationsPerHour: 1
   automaticLightIntensity: 1
-  maximumLightIntensity: 2
+  maximumLightIntensity: 10
 --- !u!1001 &604413636027402992
 PrefabInstance:
   m_ObjectHideFlags: 0
