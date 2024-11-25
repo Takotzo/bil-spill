@@ -29,9 +29,13 @@ public class S_PlayerCurrentCheckpoint_IS : NetworkBehaviour
         currentCheckpoint.Value = 0;
     }
     
-    public void SetCurrentLap(int lap)
+    public void SetCurrentLap(int lap, int totalCheckpoints)
     {
         if (!IsServer) {return;}
-        currentLap.Value = lap;
+        if (currentCheckpoint.Value <= totalCheckpoints - 1 && currentCheckpoint.Value >= (totalCheckpoints - 1) - checkpointInBetween)
+        {
+            currentCheckpoint.Value = 0;
+            currentLap.Value = lap;
+        }
     }
 }

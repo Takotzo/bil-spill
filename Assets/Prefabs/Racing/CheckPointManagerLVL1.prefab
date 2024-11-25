@@ -80,8 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf83b53da952594cbf5070386fa0c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalLapCount: 0
-  currentLap: 0
+  totalLapCount: 3
   checkpoints:
   - {fileID: 420687192772625272}
   - {fileID: 2210097194282916330}
@@ -119,8 +118,6 @@ MonoBehaviour:
   - {fileID: 2118821252523127213}
   - {fileID: 7405304596298680525}
   - {fileID: 9120154626817557480}
-  currentCheckpoint: 0
-  checkpointInBetween: 3
 --- !u!1001 &143659076421711864
 PrefabInstance:
   m_ObjectHideFlags: 0

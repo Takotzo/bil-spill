@@ -4,10 +4,7 @@ using UnityEngine;
 public class S_CheckpointManager_IS : MonoBehaviour
 {
     [SerializeField] private int totalLapCount;
-    [SerializeField] private int currentLap;
     [SerializeField] private S_Checkpoint_IS[] checkpoints;
-    [SerializeField] private int currentCheckpoint;
-    [SerializeField] private int checkpointInBetween;
     
     private void Start()
     {
@@ -15,13 +12,15 @@ public class S_CheckpointManager_IS : MonoBehaviour
         {
             checkpoints[i].SetID(i);
         }
+        
+        checkpoints[0].SetTotalCheckpoint(checkpoints.Length);
     }
 
-    public void PassStart()
-    {
-        if (currentCheckpoint <= checkpoints.Length - 1 && currentCheckpoint >= (checkpoints.Length - 1) - checkpointInBetween)
-        {
-            currentCheckpoint = 0;
-        }
-    }
+    // public void PassStart()
+    // {
+    //     if (currentCheckpoint <= checkpoints.Length - 1 && currentCheckpoint >= (checkpoints.Length - 1) - checkpointInBetween)
+    //     {
+    //         currentCheckpoint = 0;
+    //     }
+    // }
 }
