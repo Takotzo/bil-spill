@@ -111,10 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0fefceefe666bb4682b272ec8c5bdd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 120
+  ShowTopMostFoldoutHeaderGroup: 1
+  maxSpeed: 180
   maxReverseSpeed: 45
   accelerationMultiplier: 5
-  maxSteeringAngle: 35
+  maxSteeringAngle: 40
   steeringSpeed: 0.5
   brakeForce: 450
   decelerationMultiplier: 1
@@ -369,9 +370,9 @@ WheelCollider:
     m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
+    m_AsymptoteValue: 2.75
     m_Stiffness: 1
   m_IncludeLayers:
     serializedVersion: 2
@@ -440,9 +441,9 @@ WheelCollider:
     m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
+    m_AsymptoteValue: 2.75
     m_Stiffness: 1
   m_IncludeLayers:
     serializedVersion: 2
@@ -511,9 +512,9 @@ WheelCollider:
     m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
+    m_AsymptoteValue: 2.75
     m_Stiffness: 1
   m_IncludeLayers:
     serializedVersion: 2
@@ -875,9 +876,9 @@ WheelCollider:
     m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
+    m_AsymptoteValue: 2.75
     m_Stiffness: 1
   m_IncludeLayers:
     serializedVersion: 2

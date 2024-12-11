@@ -126,7 +126,7 @@ WheelCollider:
   m_Center: {x: 0, y: 0.15, z: 0}
   m_Radius: 0.36
   m_SuspensionSpring:
-    spring: 35000
+    spring: 30000
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
@@ -141,9 +141,9 @@ WheelCollider:
     m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
+    m_AsymptoteValue: 2.75
     m_Stiffness: 1
   m_IncludeLayers:
     serializedVersion: 2
@@ -310,9 +310,9 @@ WheelCollider:
     m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
+    m_AsymptoteValue: 2.75
     m_Stiffness: 1
   m_IncludeLayers:
     serializedVersion: 2
@@ -5610,9 +5610,9 @@ WheelCollider:
     m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
+    m_AsymptoteValue: 2.75
     m_Stiffness: 1
   m_IncludeLayers:
     serializedVersion: 2
@@ -11007,9 +11007,9 @@ WheelCollider:
     m_Stiffness: 1
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
-    m_ExtremumValue: 1
+    m_ExtremumValue: 3
     m_AsymptoteSlip: 0.5
-    m_AsymptoteValue: 0.75
+    m_AsymptoteValue: 2.75
     m_Stiffness: 1
   m_IncludeLayers:
     serializedVersion: 2
@@ -11074,7 +11074,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8157689423532669150}
   serializedVersion: 4
-  m_Mass: 950
+  m_Mass: 1050
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -11167,15 +11167,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  maxSpeed: 120
-  maxReverseSpeed: 45
+  maxSpeed: 180
+  maxReverseSpeed: 60
   accelerationMultiplier: 6
   maxSteeringAngle: 35
-  steeringSpeed: 0.5
+  steeringSpeed: 0.4
   brakeForce: 450
   decelerationMultiplier: 1
   handbrakeDriftMultiplier: 5
-  bodyMassCenter: {x: 0, y: 0.4, z: 0}
+  bodyMassCenter: {x: 0, y: 0.2, z: 0}
   frontLeftMesh: {fileID: 2530428459138550854}
   frontLeftCollider: {fileID: 969636342660517304}
   frontRightMesh: {fileID: 4431848558295894116}
