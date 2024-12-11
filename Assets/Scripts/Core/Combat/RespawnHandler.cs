@@ -59,7 +59,7 @@ namespace Core.Combat
         {
             yield return null;
 
-            TankPlayer playerInstance = Instantiate(playerPrefab, SpawnPoint.GetRandomSpawnPos(), quaternion.identity);
+            TankPlayer playerInstance = Instantiate(playerPrefab, SpawnPoint.GetSpawnPos(), quaternion.identity);
             
             playerInstance.NetworkObject.SpawnAsPlayerObject(ownerClientID);
             

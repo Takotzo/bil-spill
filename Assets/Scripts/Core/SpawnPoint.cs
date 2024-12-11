@@ -1,16 +1,17 @@
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Core
 {
-    public class SpawnPoint : MonoBehaviour
+    public class SpawnPoint : NetworkBehaviour
     {
         private static List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
     
         private static int count = 0;
     
-        public static Vector3 GetRandomSpawnPos()
+        public static Vector3 GetSpawnPos()
         {
             if (spawnPoints.Count == 0)
             {
