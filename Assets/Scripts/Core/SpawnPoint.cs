@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Core
 {
-    public class SpawnPoint : NetworkBehaviour
+    public class SpawnPoint : MonoBehaviour
     {
         private static List<SpawnPoint> spawnPoints = new List<SpawnPoint>();
     

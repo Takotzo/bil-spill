@@ -3,7 +3,17 @@ using UnityEngine;
 
 public class StartPoint : MonoBehaviour
 {
-    public static List<StartPoint> startPoints = new List<StartPoint>();
+    private static List<StartPoint> startPoints = new List<StartPoint>();
+    
+    private static int count = 0;
+    
+    public static Transform GetStartPos()
+    {
+        Transform point = startPoints[count].transform;            
+        count++;
+        
+        return point;
+    }
     
     
     private void OnDrawGizmos()

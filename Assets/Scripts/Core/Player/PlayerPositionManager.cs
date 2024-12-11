@@ -6,70 +6,70 @@ using UnityEngine;
 
 public class PlayerPositionManager : NetworkBehaviour
 {
-    bool readyState = false;
+    public bool readyState = false;
     private static int playerReadyCount = 0;
 
-    private List<PlayerPositionManager> players = new List<PlayerPositionManager>();
+    private MovePlayer movePlayer;
+    private S_CarConnectionSettings_IS carPlayer;
+    private static List<PlayerPositionManager> players = new List<PlayerPositionManager>();
     private void OnEnable()
     {
         players.Add(this);
     }
 
-    [Rpc(SendTo.NotServer)]
-    public void SetPlayerPositionClientRpc(Vector3 position)
+    private void Start()
     {
-        if (!IsOwner) return;
+        movePlayer = FindObjectOfType<MovePlayer>();
         
-        transform.position = position;
+        carPlayer = gameObject.GetComponent<S_CarConnectionSettings_IS>();
     }
 
-    private void OnInteract()
+    [Rpc(SendTo.Everyone)]
+    public void SetPlayerPositionClientRpc(ulong clientIdToCompare)
+    {
+        if (clientIdToCompare != carPlayer.OwnerClientId) return;
+        
+        
+        
+        movePlayer.HandlePlayerMovement(carPlayer);
+    }
+    
+
+    private void OnRespawnInput()
     {
         SetReadyStatus();
     }
 
-    private void Update()
-    {
-        if (UnityEngine.Input.GetKeyDown(KeyCode.E)){
-            
-            Debug.Log("Interact");
-            SetReadyStatus();
-        }
-    }
+    
 
     // Button call 
     private void SetReadyStatus()
     {
         if (!IsOwner) return;
+        if (readyState) return;
+        readyState = true;
         
-        readyState = !readyState;
-        if (readyState)
-        {
-            TotalPlayerReadyServerRpc(1);
-        }
-        else
-        {
-            TotalPlayerReadyServerRpc(-1);
-        }
+        TotalPlayerReadyServerRpc(carPlayer.OwnerClientId);
+        
     }
-
+    
+    
+    
     [Rpc(SendTo.Server)]
-    private void TotalPlayerReadyServerRpc(int i)
+    private void TotalPlayerReadyServerRpc(ulong clientId)
     {
         if (!IsServer) return;
 
-        playerReadyCount += i;
 
         // Check is all players are ready
-        if (playerReadyCount != players.Count) return;
+        //if (playerReadyCount != players.Count) return;
         
         
-        var positions = StartPoint.startPoints;
         // Assign players to StartPosition
-        for (int j = 0; j < players.Count; j++)
+        foreach (var t in players)
         {
-            print(positions);
-            SetPlayerPositionClientRpc(positions[j].transform.position);
+            print("Send player to startline");
+            t.SetPlayerPositionClientRpc(clientId);
         }
     }
 
