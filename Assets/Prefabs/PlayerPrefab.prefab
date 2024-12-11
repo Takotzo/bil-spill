@@ -11040,6 +11040,7 @@ GameObject:
   - component: {fileID: 9002349969882083909}
   - component: {fileID: 4045150476098209199}
   - component: {fileID: 1482284279116147187}
+  - component: {fileID: 5862521928862705075}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -11498,3 +11499,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0.6, z: 2.39}
+--- !u!114 &5862521928862705075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157689423532669150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb493700f305e1146a354bbd9a243bd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1

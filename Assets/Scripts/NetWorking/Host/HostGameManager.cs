@@ -29,7 +29,7 @@ namespace NetWorking.Host
         public string joinCode { get; private set; }
 
         
-        private const int MAX_CONNECTIONS = 20;
+        private const int MAX_CONNECTIONS = 8;
 
         private const string GAME_SCENE_NAME = "Game";
 

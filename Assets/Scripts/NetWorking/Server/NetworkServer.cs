@@ -58,7 +58,7 @@ namespace NetWorking.Server
         {
             await Task.Delay(1000);
             
-            NetworkObject playerInstance = Object.Instantiate(playerPrefab, SpawnPoint.GetRandomSpawnPos(), Quaternion.identity );
+            NetworkObject playerInstance = Object.Instantiate(playerPrefab, SpawnPoint.GetSpawnPos(), Quaternion.identity );
             
             playerInstance.SpawnAsPlayerObject(clientId);
         }
