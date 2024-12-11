@@ -22,7 +22,7 @@ namespace Core.Combat
             }
             
             TankPlayer.OnPlayerSpawned += HandlePlayerSpawned;
-            TankPlayer.OnPlayerSpawned += HandlePlayerDespawned;
+            TankPlayer.OnPlayerDespawn += HandlePlayerDespawned;
         }
         
         public override void OnNetworkDespawn()
@@ -30,7 +30,7 @@ namespace Core.Combat
             if (!IsServer) {return;}
             
             TankPlayer.OnPlayerSpawned -= HandlePlayerSpawned;
-            TankPlayer.OnPlayerSpawned -= HandlePlayerDespawned;
+            TankPlayer.OnPlayerDespawn -= HandlePlayerDespawned;
         }
         
         private void HandlePlayerSpawned(TankPlayer player)
