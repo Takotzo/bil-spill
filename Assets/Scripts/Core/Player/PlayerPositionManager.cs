@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -5,9 +8,15 @@ public class PlayerPositionManager : NetworkBehaviour
 {
     bool readyState = false;
     private static int playerReadyCount = 0;
-    
+
+    private List<PlayerPositionManager> players = new List<PlayerPositionManager>();
+    private void OnEnable()
+    {
+        players.Add(this);
+    }
+
     [Rpc(SendTo.NotServer)]
-    private void SetPlayerPositionClientRpc(Vector3 position)
+    public void SetPlayerPositionClientRpc(Vector3 position)
     {
         if (!IsOwner) return;
         
@@ -16,8 +25,16 @@ public class PlayerPositionManager : NetworkBehaviour
 
     private void OnInteract()
     {
-        Debug.Log("Interact");
         SetReadyStatus();
+    }
+
+    private void Update()
+    {
+        if (UnityEngine.Input.GetKeyDown(KeyCode.E)){
+            
+            Debug.Log("Interact");
+            SetReadyStatus();
+        }
     }
 
     // Button call 
@@ -42,17 +59,23 @@ public class PlayerPositionManager : NetworkBehaviour
         if (!IsServer) return;
 
         playerReadyCount += i;
-        var players = GameObject.FindGameObjectsWithTag("Player");
 
         // Check is all players are ready
-        if (playerReadyCount != players.Length) return;
+        if (playerReadyCount != players.Count) return;
         
         
-        var positions = StartPoint.StartPoints;
+        var positions = StartPoint.startPoints;
         // Assign players to StartPosition
-        for (int j = 0; j < players.Length; j++)
+        for (int j = 0; j < players.Count; j++)
         {
-            players[j].GetComponent<PlayerPositionManager>().SetPlayerPositionClientRpc(positions[j].transform.position);
+            print(positions);
+            SetPlayerPositionClientRpc(positions[j].transform.position);
         }
+    }
+
+
+    private void OnDisable()
+    {
+        players.Remove(this);
     }
 }
