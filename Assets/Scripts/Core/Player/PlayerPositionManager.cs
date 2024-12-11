@@ -14,8 +14,14 @@ public class PlayerPositionManager : NetworkBehaviour
         transform.position = position;
     }
 
+    private void OnInteract()
+    {
+        Debug.Log("Interact");
+        SetReadyStatus();
+    }
+
     // Button call 
-    public void SetReadyStatus()
+    private void SetReadyStatus()
     {
         if (!IsOwner) return;
         
