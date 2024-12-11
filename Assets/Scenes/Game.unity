@@ -2939,7 +2939,7 @@ GameObject:
   - component: {fileID: 1951667778}
   - component: {fileID: 1951667779}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

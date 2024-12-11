@@ -28,10 +28,24 @@ public class PlayerPositionManager : NetworkBehaviour
     public void SetPlayerPositionClientRpc(ulong clientIdToCompare)
     {
         if (clientIdToCompare != carPlayer.OwnerClientId) return;
+      
         
-        
-        
-        movePlayer.HandlePlayerMovement(carPlayer);
+        movePlayer.HandlePlayerMovement(carPlayer, players.Count);
+    }
+
+    // ulong clientIdToCompare
+    [Rpc(SendTo.Everyone)]
+    public void TurnOffVehicleRpc()
+    {
+        //if (clientIdToCompare != carPlayer.OwnerClientId) return;
+        readyState = true;
+        gameObject.GetComponent<PrometeoCarController>().enabled = false;
+    }
+
+    [Rpc(SendTo.Everyone)]
+    public void TurnOnVehicleRpc()
+    {
+        gameObject.GetComponent<PrometeoCarController>().enabled = true;
     }
     
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.Mathematics;
 using Unity.Netcode;
@@ -7,14 +8,18 @@ public class MovePlayer : NetworkBehaviour
 {
     [SerializeField] private S_CarConnectionSettings_IS playerPrefab;
     
+    int numbOfPlayers;
+    int readyPlayers = 0;
 
-    public void HandlePlayerMovement(S_CarConnectionSettings_IS player)
+    public void HandlePlayerMovement(S_CarConnectionSettings_IS player, int players)
     {
         if (!IsOwner) return;
 
         Destroy(player.gameObject);
 
         StartCoroutine(RespawnPlayer(player.OwnerClientId));
+        
+        numbOfPlayers = players;
     }
 
     private IEnumerator RespawnPlayer(ulong ownerClientID)
@@ -25,8 +30,31 @@ public class MovePlayer : NetworkBehaviour
         var playerInstance = Instantiate(playerPrefab, startTransform.position + (Vector3.up)*2, startTransform.rotation);
             
         playerInstance.NetworkObject.SpawnAsPlayerObject(ownerClientID);
+        
 
         playerInstance.GetComponent<PlayerPositionManager>().readyState = true;
+        playerInstance.GetComponent<PrometeoCarController>().enabled = false;
+        playerInstance.GetComponent<PlayerPositionManager>().TurnOffVehicleRpc();
+        readyPlayers++;
 
+        
+        
+        if (readyPlayers >= numbOfPlayers)
+        {
+            yield return new WaitForSeconds(3f);
+            StartRace();
+        }
     }
+
+    
+    private void StartRace()
+    {
+        print("StartRace");
+        var players = FindObjectsOfType<PlayerPositionManager>();
+        foreach (var player in players)
+        {
+            player.TurnOnVehicleRpc();
+        }
+    }
+    
 }
