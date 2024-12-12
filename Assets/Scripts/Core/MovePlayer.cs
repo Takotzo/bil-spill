@@ -49,7 +49,6 @@ public class MovePlayer : NetworkBehaviour
     
     private void StartRace()
     {
-        print("StartRace");
         var players = FindObjectsOfType<PlayerPositionManager>();
         foreach (var player in players)
         {

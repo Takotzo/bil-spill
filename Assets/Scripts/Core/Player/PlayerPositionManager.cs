@@ -6,12 +6,15 @@ using UnityEngine;
 
 public class PlayerPositionManager : NetworkBehaviour
 {
+    [SerializeField] private Animator _animator;
     public bool readyState = false;
     private static int playerReadyCount = 0;
 
     private MovePlayer movePlayer;
     private S_CarConnectionSettings_IS carPlayer;
     private static List<PlayerPositionManager> players = new List<PlayerPositionManager>();
+    private static readonly int StartRace = Animator.StringToHash("StartRace");
+
     private void OnEnable()
     {
         players.Add(this);
@@ -46,6 +49,7 @@ public class PlayerPositionManager : NetworkBehaviour
     public void TurnOnVehicleRpc()
     {
         gameObject.GetComponent<PrometeoCarController>().enabled = true;
+        _animator.SetTrigger(StartRace);
     }
     
 
@@ -77,18 +81,22 @@ public class PlayerPositionManager : NetworkBehaviour
 
         // Check is all players are ready
         //if (playerReadyCount != players.Count) return;
-        
-        
+        var playersCopy = new List<PlayerPositionManager>(players);
+
         // Assign players to StartPosition
-        foreach (var t in players)
+        foreach (var t in playersCopy)
         {
-            print("Send player to startline");
             t.SetPlayerPositionClientRpc(clientId);
         }
     }
 
 
     private void OnDisable()
+    {
+        players.Remove(this);
+    }
+
+    public override void OnDestroy()
     {
         players.Remove(this);
     }

@@ -13,7 +13,7 @@ public class S_CheckpointManager_IS : MonoBehaviour
             checkpoints[i].SetID(i);
         }
         
-        checkpoints[0].SetTotalCheckpoint(checkpoints.Length);
+        checkpoints[0].SetTotalCheckpoint(checkpoints.Length, totalLapCount);
     }
 
     // public void PassStart()

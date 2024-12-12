@@ -177,6 +177,15 @@ public class PrometeoCarController : NetworkBehaviour
           _spaceInput = value.isPressed;
       }
 
+      public void ResetInputs()
+      {
+        _wInput = false;
+        _sInput = false;
+        _aInput = false;
+        _dInput = false;
+        _spaceInput = false;
+      }
+
       // Start is called before the first frame update
     void Start()
     {

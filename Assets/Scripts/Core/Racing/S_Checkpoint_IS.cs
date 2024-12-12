@@ -8,6 +8,8 @@ public class S_Checkpoint_IS : MonoBehaviour
     
     private int _totalCheckpoint;
     
+    private int _totalLap;
+    
     public void SetID(int id)
     {
         gameObject.name = "Checkpoint " + id;
@@ -18,9 +20,10 @@ public class S_Checkpoint_IS : MonoBehaviour
         }
     }
     
-    public void SetTotalCheckpoint(int totalCheckpoint)
+    public void SetTotalCheckpoint(int totalCheckpoint, int totalLap)
     {
         _totalCheckpoint = totalCheckpoint;
+        _totalLap = totalLap;
     }
     
     private void OnTriggerEnter(Collider other)
@@ -33,7 +36,7 @@ public class S_Checkpoint_IS : MonoBehaviour
             }
             else
             {
-                other.GetComponent<S_PlayerCurrentCheckpoint_IS>().SetCurrentLap(other.GetComponent<S_PlayerCurrentCheckpoint_IS>().currentLap.Value + 1, _totalCheckpoint);
+                other.GetComponent<S_PlayerCurrentCheckpoint_IS>().SetCurrentLap(other.GetComponent<S_PlayerCurrentCheckpoint_IS>().currentLap.Value + 1, _totalCheckpoint, _totalLap);
             }
         }
     }

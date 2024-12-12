@@ -6,8 +6,11 @@ public class S_PlayerCurrentCheckpoint_IS : NetworkBehaviour
     public NetworkVariable<int> currentCheckpoint = new NetworkVariable<int>();
     public NetworkVariable<int> currentLap = new NetworkVariable<int>();
     
+    [SerializeField] private S_ScuffedMovingOfPlayer_IS scuffedMovingOfPlayer;
+    
     [SerializeField] private int checkpointInBetween;
     private int _totalCheckpoint;
+    private int _totalLap;
     
     public override void OnNetworkSpawn()
     {
@@ -29,13 +32,21 @@ public class S_PlayerCurrentCheckpoint_IS : NetworkBehaviour
         currentCheckpoint.Value = 0;
     }
     
-    public void SetCurrentLap(int lap, int totalCheckpoints)
+    public void SetCurrentLap(int lap, int totalCheckpoints, int totalLap)
     {
         if (!IsServer) {return;}
+        if (_totalLap == 0)
+        {
+            _totalLap = totalLap;
+        }
         if (currentCheckpoint.Value <= totalCheckpoints - 1 && currentCheckpoint.Value >= (totalCheckpoints - 1) - checkpointInBetween)
         {
             currentCheckpoint.Value = 0;
             currentLap.Value = lap;
+        }
+        if (lap > _totalLap - 1)
+        {
+            scuffedMovingOfPlayer.MovePlayer();
         }
     }
 }
