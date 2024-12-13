@@ -100,7 +100,8 @@ public class PlayerPositionManager : NetworkBehaviour
     public void EndGameServerRpc()
     {
         if (!IsServer) return;
-        for (int i = 0; i < players.Count; i++)
+        var numbOfPlayers = players.Count;
+        for (int i = 0; i < numbOfPlayers; i++)
         {
             print(i);
             SetPlayersAfterRaceClientRpc(i);
