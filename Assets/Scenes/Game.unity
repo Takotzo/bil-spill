@@ -3728,10 +3728,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckPointManagerLVL1
       objectReference: {fileID: 0}
-    - target: {fileID: 4938737932716428576, guid: ad8a51ccbe1e0734d8ec0389c915b5f9, type: 3}
-      propertyPath: totalLapCount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8773535524964086121, guid: ad8a51ccbe1e0734d8ec0389c915b5f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
