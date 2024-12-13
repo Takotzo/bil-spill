@@ -20,6 +20,8 @@ namespace Core
             
             Vector3 point = spawnPoints[count].transform.position;            
             count++;
+            if (count == spawnPoints.Count)
+                count = 0;
 
             return point;
         }

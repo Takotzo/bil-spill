@@ -11,6 +11,8 @@ public class StartPoint : MonoBehaviour
     {
         Transform point = startPoints[count].transform;            
         count++;
+        if (count == startPoints.Count)
+            count = 0;
         
         return point;
     }

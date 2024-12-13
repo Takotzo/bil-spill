@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Core;
 using Unity.Mathematics;
 using Unity.Netcode;
 using UnityEngine;
@@ -30,7 +31,8 @@ public class MovePlayer : NetworkBehaviour
         var playerInstance = Instantiate(playerPrefab, startTransform.position + (Vector3.up)*2, startTransform.rotation);
             
         playerInstance.NetworkObject.SpawnAsPlayerObject(ownerClientID);
-        
+        playerInstance.NetworkObject.ChangeOwnership(ownerClientID);
+
 
         playerInstance.GetComponent<PlayerPositionManager>().readyState = true;
         playerInstance.GetComponent<PrometeoCarController>().enabled = false;
@@ -55,5 +57,30 @@ public class MovePlayer : NetworkBehaviour
             player.TurnOnVehicleRpc();
         }
     }
-    
+
+
+    public void FinishRace(PlayerPositionManager player)
+    {
+        print(IsOwner);
+        if (!IsOwner) return;
+
+        var ownerClientID = player.OwnerClientId;
+        
+        Destroy(player.gameObject);
+        
+        
+        StartCoroutine(SendPlayersBackToSpawn(ownerClientID));
+
+    }
+
+    private IEnumerator SendPlayersBackToSpawn(ulong ownerClientID)
+    {
+        yield return null;
+        var startTransform = SpawnPoint.GetSpawnPos();
+        var playerInstance = Instantiate(playerPrefab, startTransform + (Vector3.up)*2, quaternion.identity);
+            
+        playerInstance.NetworkObject.SpawnAsPlayerObject(ownerClientID);
+        playerInstance.NetworkObject.ChangeOwnership(ownerClientID);
+
+    }
 }

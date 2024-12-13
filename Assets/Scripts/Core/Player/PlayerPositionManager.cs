@@ -36,6 +36,12 @@ public class PlayerPositionManager : NetworkBehaviour
         movePlayer.HandlePlayerMovement(carPlayer, players.Count);
     }
 
+    [Rpc(SendTo.Everyone)]
+    public void SetPlayersAfterRaceClientRpc(int playerRacing)
+    {
+        movePlayer.FinishRace(players[playerRacing]);
+    }
+
     // ulong clientIdToCompare
     [Rpc(SendTo.Everyone)]
     public void TurnOffVehicleRpc()
@@ -87,6 +93,15 @@ public class PlayerPositionManager : NetworkBehaviour
         foreach (var t in playersCopy)
         {
             t.SetPlayerPositionClientRpc(clientId);
+        }
+    }
+
+    [Rpc(SendTo.Server)]
+    public void EndGameServerRpc()
+    {
+        for (int i = 0; i < players.Count; i++)
+        {
+            SetPlayersAfterRaceClientRpc(i);
         }
     }
 

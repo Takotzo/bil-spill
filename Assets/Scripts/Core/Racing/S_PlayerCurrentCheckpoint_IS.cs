@@ -46,7 +46,9 @@ public class S_PlayerCurrentCheckpoint_IS : NetworkBehaviour
         }
         if (lap > _totalLap - 1)
         {
-            scuffedMovingOfPlayer.MovePlayer();
+            // Win Condition
+            GetComponent<S_ScuffedMovingOfPlayer_IS>().MovePlayerRpc();
+            //GetComponent<PlayerPositionManager>().EndGameServerRpc();
         }
     }
 }
