@@ -99,19 +99,16 @@ public class PlayerPositionManager : NetworkBehaviour
     [Rpc(SendTo.Server)]
     public void EndGameServerRpc()
     {
+        if (!IsServer) return;
         for (int i = 0; i < players.Count; i++)
         {
+            print(i);
             SetPlayersAfterRaceClientRpc(i);
         }
     }
 
 
     private void OnDisable()
-    {
-        players.Remove(this);
-    }
-
-    public override void OnDestroy()
     {
         players.Remove(this);
     }

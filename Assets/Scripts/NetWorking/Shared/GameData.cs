@@ -35,6 +35,7 @@ namespace NetWorking.Shared
         public GameMode gameMode;
         public GameQueue gameQueue;
 
+        
         public string ToMultiplayQueue()
         {
             return gameQueue switch
